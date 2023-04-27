@@ -3,9 +3,7 @@ package bsu.comp152;
 import org.junit.jupiter.api.Test;
 
 public class CarTest {
-
     Car car1 = new Car("Toyota Prius", 2010);
-
     Car car2 = new Car("Honda Civic", 1997);
 
     @Test
@@ -15,7 +13,7 @@ public class CarTest {
 
     @Test
     void testGetYear(){
-        assert(car1.getYear()==2010);
+        assert(car1.getYear() == 2010);
     }
 
     @Test
@@ -26,7 +24,7 @@ public class CarTest {
     @Test
     void testAccelerateAddsFive(){
         car1.accelerate();
-        assert(car1.getSpeed()==5);
+        assert(car1.getSpeed() == 5);
     }
 
     @Test
@@ -34,4 +32,16 @@ public class CarTest {
         assert(car1.toString().equals("2010 Toyota Prius"));
     }
 
+    @Test
+    void testEqualsReturnsTrueWhenOnlyMakeModelAndYearEqual(){
+        Car car = new Car("Toyota Prius", 2010);
+        car1.accelerate();
+        assert(car1.equals(car));
+    }
+
+    @Test
+    void testIsSpeedingReturnsFalseWhenSpeedEqualsLimit(){
+        car1.setSpeed(55);
+        assert(!car1.isSpeeding(55));
+    }
 }
